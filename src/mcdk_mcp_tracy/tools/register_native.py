@@ -25,12 +25,12 @@ def register(mcp: FastMCP, state: ServerState) -> None:
     ) -> dict[str, Any]:
         """Capture function timings from the game's NATIVE Tracy server (TCP 8086).
 
-        Use this when ``tracy_status`` reports ``getCpuFrameData=false`` but the
-        tracy-profiler GUI can still connect to the game — that means the client
-        embeds a native Tracy server even though the Python profiler binding is
-        missing. This drives the bundled tracy-capture / tracy-csvexport CLIs; no
-        module whitelist is needed (native Tracy traces every zone, across the
-        client's MAIN_THREAD and MC_SERVER threads).
+        Use this once ``tracy_status`` reports ``native_tracy.reachable=true`` and
+        ``bin_present=true``. The client embeds a native Tracy server (the one the
+        tracy-profiler GUI connects to) even on builds where the Python profiler
+        binding is missing. This drives the bundled tracy-capture / tracy-csvexport
+        CLIs; no module whitelist is needed (native Tracy traces every zone, across
+        the client's MAIN_THREAD and MC_SERVER threads).
 
         Drive the gameplay you want to measure DURING the window. The returned
         ``capture_id`` plugs into tracy_get_function_costs / tracy_diff_captures

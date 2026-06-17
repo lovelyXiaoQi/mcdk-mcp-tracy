@@ -26,7 +26,7 @@ def register(mcp: FastMCP, state: ServerState) -> None:
         substring; without a filter, returns the top `limit` by self-time.
 
         Args:
-            capture_id: id from tracy_capture_and_rank (required).
+            capture_id: id from tracy_native_capture (required).
             names: exact function names to include.
             name_contains: case-insensitive substring filter (e.g. your mod prefix).
             limit: max rows to return (default 50).
