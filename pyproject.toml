@@ -1,0 +1,29 @@
+[project]
+name = "mcdk-mcp-tracy"
+version = "0.1.0"
+description = "MCP server that profiles a running NetEase Minecraft Bedrock mod (in-game CPU profiler / tracy_mod) for code-review and optimization."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "mcp[cli]>=1.2",
+]
+
+[project.scripts]
+mcdk-mcp-tracy = "mcdk_mcp_tracy.__main__:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcdk_mcp_tracy"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
